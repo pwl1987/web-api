@@ -219,3 +219,23 @@ const saveContextAjax = async (lang: string): Promise<void> => {
   localStorage.setItem(lang_, lang);
 };
 </script>
+
+<!-- 保留原有样式作为降级方案 -->
+<style scoped>
+/* Original: Line 1-10 */
+.dropdown-box .t-icon-chevron-right {
+  display: none !important;
+}
+
+/* Original: Line 11-13 */
+.language-active {
+  color: var(--color-primary) !important;
+}
+
+/* Original: Line 14-18 */
+.t-dropdown__item-text .language-switch {
+  width: 16px;
+  display: block;
+  margin-left: 14px;
+}
+</style>

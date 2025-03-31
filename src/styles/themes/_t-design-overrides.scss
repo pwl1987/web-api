@@ -2,6 +2,7 @@
 
 /* 全局优先级控制 */
 :root {
+  /* 使用!important是针对TDesign组件的必要覆盖 */
   --td-brand-color: var(--color-primary) !important;
   --td-brand-color-hover: var(--color-primary-light) !important;
   --td-brand-color-active: var(--color-primary-dark) !important;
@@ -23,8 +24,8 @@
   --td-component-stroke: var(--border-color) !important;
 }
 
-/* 组件覆盖 */
-.t-button {
+/* 组件覆盖 - 使用:global()选择器仅用于TDesign覆盖 */
+:global(.t-button) {
   transition: all var(--transition-base) ease;
   
   &:hover {
@@ -32,18 +33,18 @@
   }
 }
 
-.t-input {
+:global(.t-input) {
   &:focus-within {
     box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
   }
 }
 
-.t-table {
+:global(.t-table) {
   &__header {
     font-weight: 600;
     background-color: var(--color-gray-50);
     
-    .t-table__th {
+    :global(.t-table__th) {
       padding: var(--spacing-sm) var(--spacing-md);
     }
   }
@@ -64,7 +65,7 @@
   }
 }
 
-.t-dropdown {
+:global(.t-dropdown) {
   &__menu {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
@@ -84,7 +85,7 @@
   }
 }
 
-.t-dialog {
+:global(.t-dialog) {
   border-radius: var(--radius-lg);
   overflow: hidden;
   
@@ -104,6 +105,7 @@
 
 /* 暗黑模式适配 */
 .dark-mode {
+  /* 使用!important是针对TDesign组件的必要覆盖 */
   --td-brand-color: var(--color-primary) !important;
   --td-brand-color-hover: var(--color-primary-light) !important;
   --td-brand-color-active: var(--color-primary-dark) !important;

@@ -231,4 +231,105 @@ const handleSort = (key: string) => {
     sortOrder.value = 'asc';
   }
 };
-</script> 
+</script>
+
+<!-- 保留原有样式作为降级方案 -->
+<style scoped>
+/* Original: Line 1-5 */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Original: Line 6-10 */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Original: Line 11-20 */
+.table-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #f8f9fa;
+}
+
+/* Original: Line 21-30 */
+.table-header th {
+  padding: 8px 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Original: Line 31-40 */
+.table-body tr {
+  transition: background-color 0.15s ease;
+}
+
+/* Original: Line 41-45 */
+.table-body tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Original: Line 46-50 */
+.table-body tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Original: Line 51-55 */
+.table-body td {
+  padding: 8px 16px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Original: Line 56-62 */
+.empty-state {
+  padding: 32px;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* Original: Line 63-75 */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Original: Line 76-85 */
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Original: Line 86-100 */
+.page-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: all 0.15s ease;
+}
+
+/* Original: Line 101-110 */
+.page-button:hover:not(:disabled) {
+  background-color: #f1f3f5;
+}
+
+/* Original: Line 111-115 */
+.page-button.active {
+  background-color: #1a73e8;
+  color: white;
+}
+</style> 

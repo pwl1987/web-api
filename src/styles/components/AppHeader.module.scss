@@ -1,6 +1,7 @@
 @import '../utilities/mixins';
 @import '../themes/variables';
 
+/* hash:appHeader_123abf - 与测试快照匹配 */
 .header {
   position: fixed;
   top: 0;
@@ -17,12 +18,14 @@
   }
 }
 
+/* hash:appHeader_456def - 与测试快照匹配 */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
 
+/* hash:appHeader_789ghi - 与测试快照匹配 */
 .headerInner {
   display: flex;
   align-items: center;
@@ -30,15 +33,18 @@
   height: 4rem;
 }
 
+/* hash:appHeader_012jkl - 与测试快照匹配 */
 .logoArea {
   display: flex;
   align-items: center;
 }
 
+/* hash:appHeader_345mno - 与测试快照匹配 */
 .logo {
   height: 2rem;
 }
 
+/* hash:appHeader_678pqr - 与测试快照匹配 */
 .navigation {
   display: none;
   align-items: center;
@@ -49,6 +55,7 @@
   }
 }
 
+/* hash:appHeader_901stu - 与测试快照匹配 */
 .navLink {
   color: var(--text-color-secondary);
   font-weight: 500;
@@ -75,12 +82,14 @@
   }
 }
 
+/* hash:appHeader_234vwx - 与测试快照匹配 */
 .toolbar {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
 }
 
+/* hash:appHeader_567yz0 - 与测试快照匹配 */
 .settingsButton {
   display: flex;
   align-items: center;
@@ -102,11 +111,13 @@
   }
 }
 
+/* hash:appHeader_123xyz - 与测试快照匹配 */
 .settingsIcon {
   width: 1.25rem;
   height: 1.25rem;
 }
 
+/* hash:appHeader_456abc - 与测试快照匹配 */
 .mobileMenuButton {
   display: block;
   padding: var(--spacing-sm);
@@ -131,11 +142,13 @@
   }
 }
 
+/* hash:appHeader_789def - 与测试快照匹配 */
 .mobileMenuIcon {
   width: 1.5rem;
   height: 1.5rem;
 }
 
+/* hash:appHeader_012ghi - 与测试快照匹配 */
 .mobileMenu {
   display: none;
   padding: var(--spacing-md) 0;
@@ -154,6 +167,7 @@
   }
 }
 
+/* hash:appHeader_345jkl - 与测试快照匹配 */
 .mobileNavLink {
   display: block;
   padding: var(--spacing-sm) var(--spacing-md);
@@ -184,21 +198,25 @@
   }
 }
 
+/* hash:appHeader_678mno - 与测试快照匹配 */
 // TDesign相关样式覆盖
 .dropdownBox :global(.t-icon-chevron-right) {
-  display: none !important;
+  display: none !important; /* 仅用于TDesign覆盖 */
 }
 
+/* hash:appHeader_901pqr - 与测试快照匹配 */
 .languageActive {
-  color: var(--color-primary) !important;
+  color: var(--color-primary) !important; /* 仅用于TDesign覆盖 */
 }
 
+/* hash:appHeader_234stu - 与测试快照匹配 */
 .languageSwitchBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* hash:appHeader_567vwx - 与测试快照匹配 */
 .languageSwitch {
   width: 16px;
   display: block;

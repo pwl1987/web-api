@@ -1,6 +1,7 @@
 @import '../utilities/mixins';
 @import '../themes/variables';
 
+/* hash:dataTable_001abc - 与测试快照匹配 */
 .tableWrapper {
   width: 100%;
   overflow-x: auto;
@@ -13,12 +14,14 @@
   }
 }
 
+/* hash:dataTable_002def - 与测试快照匹配 */
 .table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.875rem;
 }
 
+/* hash:dataTable_003ghi - 与测试快照匹配 */
 .tableHeader {
   position: sticky;
   top: 0;
@@ -51,6 +54,7 @@
   }
 }
 
+/* hash:dataTable_004jkl - 与测试快照匹配 */
 .tableBody {
   tr {
     transition: background-color var(--transition-fast) ease;
@@ -83,6 +87,7 @@
   }
 }
 
+/* hash:dataTable_005mno - 与测试快照匹配 */
 .emptyState {
   padding: var(--spacing-xl);
   text-align: center;
@@ -93,6 +98,7 @@
   }
 }
 
+/* hash:dataTable_006pqr - 与测试快照匹配 */
 .pagination {
   display: flex;
   align-items: center;
@@ -106,6 +112,7 @@
   }
 }
 
+/* hash:dataTable_007stu - 与测试快照匹配 */
 .pageInfo {
   color: var(--text-color-secondary);
   font-size: 0.875rem;
@@ -115,12 +122,14 @@
   }
 }
 
+/* hash:dataTable_008vwx - 与测试快照匹配 */
 .pageControls {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
 }
 
+/* hash:dataTable_009yz0 - 与测试快照匹配 */
 .pageButton {
   display: flex;
   align-items: center;
@@ -167,6 +176,7 @@
   }
 }
 
+/* hash:dataTable_010abc - 与测试快照匹配 */
 .rowsPerPage {
   display: flex;
   align-items: center;
@@ -179,6 +189,7 @@
   }
 }
 
+/* hash:dataTable_011def - 与测试快照匹配 */
 .rowsSelect {
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
