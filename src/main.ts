@@ -1,4 +1,6 @@
 import './assets/main.css'
+// 导入我们的新样式
+import './styles/main.scss'
 import TDesign from 'tdesign-vue-next'
 import { createApp, type App as VueApp } from 'vue'
 import { createPinia } from 'pinia'

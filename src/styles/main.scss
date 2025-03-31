@@ -1,0 +1,19 @@
+/* 基础样式 */
+@import './base/reset';
+@import './base/typography';
+
+/* 工具类 */
+@import './utilities/animations';
+
+/* 主题变量 */
+@import './themes/variables';
+@import './themes/t-design-overrides';
+
+/* 全局样式 */
+:root {
+  font-family: var(--td-font-family);
+  color: var(--text-color-primary);
+  background-color: var(--bg-color-page);
+}
+
+/* CSS模块样式在各组件中单独导入 */ 

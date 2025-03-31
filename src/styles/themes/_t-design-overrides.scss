@@ -1,0 +1,117 @@
+/* TDesign样式覆盖 */
+
+/* 全局优先级控制 */
+:root {
+  --td-brand-color: var(--color-primary) !important;
+  --td-brand-color-hover: var(--color-primary-light) !important;
+  --td-brand-color-active: var(--color-primary-dark) !important;
+  --td-brand-color-focus: var(--color-primary-light) !important;
+  --td-brand-color-disabled: rgba(26, 115, 232, 0.4) !important;
+  
+  --td-radius: var(--radius-sm) !important;
+  --td-font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+  
+  /* 文字颜色 */
+  --td-text-color-primary: var(--text-color-primary) !important;
+  --td-text-color-secondary: var(--text-color-secondary) !important;
+  --td-text-color-placeholder: var(--text-color-muted) !important;
+  
+  /* 背景颜色 */
+  --td-bg-color-page: var(--bg-color-page) !important;
+  --td-bg-color-container: var(--bg-color-light) !important;
+  --td-bg-color-component: var(--bg-color-light) !important;
+  --td-component-stroke: var(--border-color) !important;
+}
+
+/* 组件覆盖 */
+.t-button {
+  transition: all var(--transition-base) ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.t-input {
+  &:focus-within {
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  }
+}
+
+.t-table {
+  &__header {
+    font-weight: 600;
+    background-color: var(--color-gray-50);
+    
+    .t-table__th {
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+  }
+  
+  &__row {
+    &:hover {
+      background-color: rgba(26, 115, 232, 0.05);
+    }
+    
+    &--striped {
+      background-color: var(--color-gray-50);
+    }
+  }
+  
+  &__cell {
+    padding: var(--spacing-sm) var(--spacing-md);
+    transition: all var(--transition-fast) ease;
+  }
+}
+
+.t-dropdown {
+  &__menu {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+  
+  &__item {
+    transition: all var(--transition-fast) ease;
+    
+    &:hover {
+      background-color: var(--color-gray-100);
+    }
+    
+    &--active {
+      background-color: rgba(26, 115, 232, 0.1);
+      color: var(--color-primary);
+    }
+  }
+}
+
+.t-dialog {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  
+  &__header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  &__body {
+    padding: var(--spacing-lg);
+  }
+  
+  &__footer {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+/* 暗黑模式适配 */
+.dark-mode {
+  --td-brand-color: var(--color-primary) !important;
+  --td-brand-color-hover: var(--color-primary-light) !important;
+  --td-brand-color-active: var(--color-primary-dark) !important;
+  --td-brand-color-focus: var(--color-primary-light) !important;
+  --td-brand-color-disabled: rgba(66, 133, 244, 0.4) !important;
+  
+  --td-bg-color-page: var(--bg-color-page) !important;
+  --td-bg-color-container: var(--bg-color-light) !important;
+  --td-bg-color-component: var(--bg-color-light) !important;
+  --td-component-stroke: var(--border-color) !important;
+} 

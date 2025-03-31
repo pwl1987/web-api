@@ -1,0 +1,130 @@
+:root {
+  /* 颜色系统 - 浅色主题默认 */
+  --color-primary: #1a73e8;
+  --color-primary-light: #4285f4;
+  --color-primary-dark: #0d47a1;
+  
+  --color-secondary: #6c757d;
+  --color-secondary-light: #98a6ad;
+  --color-secondary-dark: #495057;
+  
+  --color-success: #28a745;
+  --color-success-light: #48c564;
+  --color-success-dark: #1e7e34;
+  
+  --color-danger: #dc3545;
+  --color-danger-light: #e25563;
+  --color-danger-dark: #bd2130;
+  
+  --color-warning: #ffc107;
+  --color-warning-light: #ffcd39;
+  --color-warning-dark: #d39e00;
+  
+  --color-info: #17a2b8;
+  --color-info-light: #3ab7cc;
+  --color-info-dark: #117a8b;
+  
+  /* 中性色 */
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
+  
+  /* 背景色 */
+  --bg-color-light: #ffffff;
+  --bg-color-dark: #f8f9fa;
+  --bg-color-page: #f5f7fa;
+  
+  /* 文本颜色 */
+  --text-color-primary: #212529;
+  --text-color-secondary: #6c757d;
+  --text-color-muted: #98a6ad;
+  --text-color-light: #f8f9fa;
+  
+  /* 边框颜色 */
+  --border-color: #e9ecef;
+  --border-color-light: #f1f3f5;
+  --border-color-dark: #dee2e6;
+  
+  /* 尺寸变量 */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  
+  /* 圆角 */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-round: 50%;
+  
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* 过渡时间 */
+  --transition-fast: 0.15s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.5s;
+  
+  /* z-index层级 */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}
+
+/* 暗色主题变量 */
+.dark-mode {
+  --color-primary: #4285f4;
+  --color-primary-light: #6ea7ff;
+  --color-primary-dark: #1a56c7;
+  
+  /* 背景色 */
+  --bg-color-light: #2d3748;
+  --bg-color-dark: #1a202c;
+  --bg-color-page: #171923;
+  
+  /* 文本颜色 */
+  --text-color-primary: #f7fafc;
+  --text-color-secondary: #e2e8f0;
+  --text-color-muted: #a0aec0;
+  --text-color-light: #f8f9fa;
+  
+  /* 边框颜色 */
+  --border-color: #2d3748;
+  --border-color-light: #4a5568;
+  --border-color-dark: #1a202c;
+  
+  /* 中性色暗色模式下的调整 */
+  --color-gray-50: #2d3748;
+  --color-gray-100: #4a5568;
+  --color-gray-200: #718096;
+  --color-gray-300: #a0aec0;
+  --color-gray-400: #cbd5e0;
+  --color-gray-500: #e2e8f0;
+  --color-gray-600: #edf2f7;
+  --color-gray-700: #f7fafc;
+  --color-gray-800: #f7fafc;
+  --color-gray-900: #ffffff;
+  
+  /* 阴影在暗色主题下的调整 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+} 

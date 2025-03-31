@@ -1,0 +1,67 @@
+/* 响应式断点混合宏 */
+@mixin mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 640px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+/* 弹性布局混合宏 */
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+/* 网格布局混合宏 */
+@mixin grid($columns: 1, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+/* 文本截断混合宏 */
+@mixin text-truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* 阴影混合宏 */
+@mixin shadow($level: 'sm') {
+  @if $level == 'sm' {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  } @else if $level == 'md' {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  } @else if $level == 'lg' {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  } @else if $level == 'xl' {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+} 
