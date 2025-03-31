@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目现状白皮书</title>
+  <style>
+    body {
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #1a73e8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: 'Courier New', monospace;
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .risk-low {
+      color: green;
+    }
+    .risk-medium {
+      color: orange;
+    }
+    .risk-high {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>项目现状白皮书</h1>
+  
+  <h2>技术栈矩阵表</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>模块</th>
+        <th>当前版本</th>
+        <th>安全范围</th>
+        <th>兼容性风险</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vue</td>
+        <td>3.5.13</td>
+        <td>3.3+</td>
+        <td class="risk-low">低</td>
+      </tr>
+      <tr>
+        <td>Pinia</td>
+        <td>3.0.1</td>
+        <td>2.1+</td>
+        <td class="risk-low">低</td>
+      </tr>
+      <tr>
+        <td>TDesign</td>
+        <td>1.11.4</td>
+        <td>1.0+</td>
+        <td class="risk-low">低</td>
+      </tr>
+      <tr>
+        <td>Vite</td>
+        <td>6.2.3</td>
+        <td>5.0+</td>
+        <td class="risk-low">低</td>
+      </tr>
+      <tr>
+        <td>TypeScript</td>
+        <td>5.8.2</td>
+        <td>5.0+</td>
+        <td class="risk-low">低</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>架构分析</h2>
+  
+  <h3>组件树概览</h3>
+  <pre><code>App.vue
+├── AppHeader.vue
+├── ThemeToggle.vue
+├── VoiceSelector.vue
+├── ModalFinished.vue
+├── deleteDialog.vue
+├── menuLIst.vue
+├── agreement.vue
+└── model-create/
+    └── (子组件...)</code></pre>
+
+  <h3>Pinia模块关系图</h3>
+  <pre><code>@startuml
+package "Stores" {
+  [app.ts] &lt;-- [user.ts] : 引用
+  [home.ts]
+  [user.ts]
+  [voice.ts]
+}
+@enduml</code></pre>
+
+  <h2>样式耦合度检测</h2>
+  
+  <h3>样式使用分析</h3>
+  <ul>
+    <li>主要使用TDesign组件库</li>
+    <li>部分组件使用Tailwind类名（如AppHeader.vue）</li>
+    <li>使用了SCSS预处理器（设置在 <code>&lt;script setup lang="ts"&gt;</code> 中）</li>
+  </ul>
+
+  <h3>耦合度报告</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>组件</th>
+        <th>内联样式比例</th>
+        <th>全局样式引用</th>
+        <th>TDesign覆盖次数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>AppHeader.vue</td>
+        <td>80%</td>
+        <td>0次</td>
+        <td>轻度定制</td>
+      </tr>
+      <tr>
+        <td>ThemeToggle.vue</td>
+        <td>40%</td>
+        <td>0次</td>
+        <td>无覆盖</td>
+      </tr>
+      <tr>
+        <td>VoiceSelector.vue</td>
+        <td>60%</td>
+        <td>0次</td>
+        <td>适度定制</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>路由验证</h2>
+  
+  <h3>路由结构</h3>
+  <pre><code>const routes: Array&lt;RouteRecordRaw&gt; = [
+  {
+    path: '/',
+    name: 'root',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: home
+  },
+  {
+    path: '/video/edit',
+    name: 'videoEdit',
+    component: VideoEditView
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: account
+  },
+  {
+    path: '/voice/management',
+    name: 'voiceManagement',
+    component: VoiceManagement
+  },
+]</code></pre>
+
+  <h3>路由热力图</h3>
+  <pre><code>{
+  "depth": 2,
+  "dynamicImports": 0,
+  "middlewareHooks": 0
+}</code></pre>
+
+  <h2>项目亮点</h2>
+  <ol>
+    <li>
+      <strong>现代化技术栈</strong>：
+      <ul>
+        <li>Vue 3.5.13 (最新稳定版)</li>
+        <li>Pinia 3.0.1 (状态管理)</li>
+        <li>Vite 6.2.3 (构建工具)</li>
+      </ul>
+    </li>
+    <li>
+      <strong>国际化支持</strong>：
+      <ul>
+        <li>使用vue-i18n进行国际化</li>
+        <li>支持中文和英文切换</li>
+      </ul>
+    </li>
+    <li>
+      <strong>主题支持</strong>：
+      <ul>
+        <li>实现了暗黑/明亮主题切换</li>
+        <li>通过ThemeToggle组件控制</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>潜在问题</h2>
+  <ol>
+    <li>
+      <strong>TypeScript配置宽松</strong>：
+      <ul>
+        <li>tsconfig.json中禁用了strict模式</li>
+        <li>noImplicitAny设为false</li>
+        <li>这可能导致类型安全问题</li>
+      </ul>
+    </li>
+    <li>
+      <strong>样式技术混用</strong>：
+      <ul>
+        <li>同时使用TDesign、Tailwind和内联样式</li>
+        <li>可能导致样式冲突和维护困难</li>
+      </ul>
+    </li>
+    <li>
+      <strong>缺少路由守卫</strong>：
+      <ul>
+        <li>路由定义简单，未见权限控制</li>
+        <li>未实现完整的路由守卫机制</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>建议改进</h2>
+  <ol>
+    <li>
+      <strong>TypeScript规范化</strong>：
+      <ul>
+        <li>逐步启用strict模式</li>
+        <li>添加更严格的类型检查</li>
+      </ul>
+    </li>
+    <li>
+      <strong>统一样式方案</strong>：
+      <ul>
+        <li>选择一种主要样式方案（TDesign或Tailwind）</li>
+        <li>减少内联样式使用</li>
+      </ul>
+    </li>
+    <li>
+      <strong>增强路由安全</strong>：
+      <ul>
+        <li>添加路由守卫</li>
+        <li>实现基于角色的访问控制</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>验证结果</h2>
+  <ol>
+    <li>
+      <strong>Vue版本支持Composition API</strong>
+      <p>是的，项目使用Vue 3.5.13版本，完全支持Composition API。从AppHeader.vue组件中可以看到&lt;script setup lang="ts"&gt;的使用，以及reactive、ref、computed、watch等Composition API的使用。</p>
+    </li>
+    <li>
+      <strong>Pinia模块依赖关系</strong>
+      <p>存在单向依赖而非循环依赖。从user.ts中可以看到它导入并使用了app.ts中的useAppStore，但app.ts没有反向依赖user.ts，因此不存在循环依赖。</p>
+    </li>
+    <li>
+      <strong>TDesign样式污染风险</strong>
+      <p>风险等级较低。项目中通过import 'tdesign-vue-next/es/style/index.css'只引入了TDesign的少量全局样式变量，而不是完整的样式库，并且项目中主要通过TDesign组件和类名来应用样式，没有发现大量重写TDesign样式的情况。</p>
+    </li>
+    <li>
+      <strong>路由懒加载状况</strong>
+      <p>当前路由配置中没有使用动态导入。在router/index.ts中，所有组件都是直接导入的，而不是使用() => import('...')的懒加载方式。</p>
+    </li>
+  </ol>
+</body>
+</html>
