@@ -3,11 +3,12 @@ import MenuLIst from '@renderer/components/menuLIst.vue'
 import { handleShowMenu } from '@renderer/utils/index.js'
 import AppHeader from '@renderer/components/AppHeader.vue'
 import Agreement from '@renderer/components/agreement.vue'
+import AppLayout from '@renderer/components/AppLayout.vue'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHomeStore } from '@renderer/stores/home'
 import { useI18n } from 'vue-i18n'
-import { agreementKey, lang_ } from '@/utils/const'
+import { agreementKey, lang_ } from '@renderer/utils/const'
 
 const { locale } = useI18n()
 const unRoute = useRoute()
@@ -67,24 +68,35 @@ const getContextAjax = async () => {
     <div class="loader"></div>
   </div>
   
-  <!-- 主应用容器 -->
-  <div class="app-container bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
-    <AppHeader v-if="!isShowMenu" />
-    <MenuLIst v-if="!isShowMenu" />
+  <!-- 数据驱动风格主应用容器 -->
+  <AppLayout v-if="!isShowMenu">
+    <template #header>
+      <AppHeader />
+    </template>
     
-    <main 
-      class="pt-16 transition-all duration-300"
-      :class="!isShowMenu ? 'pl-20 md:pl-20' : ''"
-    >
+    <template #sidebar>
+      <MenuLIst />
+    </template>
+    
+    <router-view v-slot="{ Component, route }">
+      <transition name="page" mode="out-in">
+        <component :is="Component" :key="route.path" />
+      </transition>
+    </router-view>
+  </AppLayout>
+  
+  <!-- 原始容器作为降级方案 -->
+  <div v-else class="app-container bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+    <main>
       <router-view v-slot="{ Component, route }">
         <transition name="page" mode="out-in">
           <component :is="Component" :key="route.path" />
         </transition>
       </router-view>
     </main>
-    
-    <Agreement v-model="home.homeState.agreementVisible" />
   </div>
+  
+  <Agreement v-model="home.homeState.agreementVisible" />
 </template>
 
 <style>

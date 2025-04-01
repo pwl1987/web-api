@@ -114,7 +114,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import styles from '@/styles/components/DataTable.module.scss';
+import styles from '@renderer/styles/components/DataTable.module.scss';
 
 interface TableColumn {
   key: string;
@@ -352,9 +352,9 @@ const handleSort = (key: string) => {
 
 /* 数据驱动风格表格样式增强 */
 :deep(.dd-table-wrapper) {
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: calc(var(--grid-unit) * 1px);
-  background-color: white;
+  border: 1px solid var(--td-border-color);
+  border-radius: var(--td-border-radius);
+  background-color: var(--td-bg-color-container);
 }
 
 :deep(.dd-table) {
@@ -362,26 +362,26 @@ const handleSort = (key: string) => {
 }
 
 :deep(.dd-table-header) {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--td-bg-color-container-hover);
 }
 
 :deep(.dd-table-th) {
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.85);
-  padding: calc(var(--grid-unit) * 1.5px) calc(var(--grid-unit) * 2px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: var(--td-text-color-primary);
+  padding: var(--td-spacing-3) var(--td-spacing-4);
+  border-bottom: 1px solid var(--td-border-color);
 }
 
 :deep(.dd-table-row) {
-  transition: background-color 0.2s;
+  transition: background-color var(--td-anim-duration-base);
 }
 
 :deep(.dd-table-row:hover) {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--td-bg-color-container-hover);
 }
 
 :deep(.dd-table-row-even) {
-  background-color: white;
+  background-color: var(--td-bg-color-container);
 }
 
 :deep(.dd-table-row-odd) {
@@ -389,37 +389,37 @@ const handleSort = (key: string) => {
 }
 
 :deep(.dd-table-cell) {
-  padding: calc(var(--grid-unit) * 1.5px) calc(var(--grid-unit) * 2px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.65);
+  padding: var(--td-spacing-3) var(--td-spacing-4);
+  border-bottom: 1px solid var(--td-border-color);
+  color: var(--td-text-color-secondary);
 }
 
 :deep(.dd-table-empty) {
-  color: rgba(0, 0, 0, 0.45);
-  padding: calc(var(--grid-unit) * 4px);
+  color: var(--td-text-color-placeholder);
+  padding: var(--td-spacing-6);
 }
 
 :deep(.dd-table-pagination) {
-  padding: calc(var(--grid-unit) * 1.5px) calc(var(--grid-unit) * 2px);
-  background-color: rgba(0, 0, 0, 0.01);
+  padding: var(--td-spacing-3) var(--td-spacing-4);
+  background-color: var(--td-bg-color-container-hover);
 }
 
 :deep(.dd-page-button) {
-  min-width: calc(var(--grid-unit) * 4px);
-  height: calc(var(--grid-unit) * 4px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: calc(var(--grid-unit) * 0.5px);
+  min-width: var(--td-spacing-6);
+  height: var(--td-spacing-6);
+  border: 1px solid var(--td-border-color);
+  border-radius: calc(var(--td-border-radius) / 2);
 }
 
 :deep(.dd-page-button-active) {
-  background-color: hsl(var(--dd-primary));
-  border-color: hsl(var(--dd-primary));
+  background-color: var(--td-primary-color);
+  border-color: var(--td-primary-color);
   color: white;
 }
 
 :deep(.dd-rows-select) {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: calc(var(--grid-unit) * 0.5px);
+  border: 1px solid var(--td-border-color);
+  border-radius: calc(var(--td-border-radius) / 2);
   padding: 2px 8px;
   margin-left: 8px;
 }

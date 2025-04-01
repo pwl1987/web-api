@@ -1,16 +1,16 @@
 /* 基础样式 */
-@import './base/reset';
-@import './base/typography';
+@use 'base/reset';
+@use 'base/typography';
 
 /* 工具类 */
-@import './utilities/animations';
+@use 'utilities/animations';
 
 /* 主题变量 */
-@import './themes/variables';
-@import './themes/t-design-overrides';
+@use 'themes/variables';
+@use 'themes/t-design-overrides';
 
 /* 数据驱动风格 */
-@import './data-driven.css';
+@use './data-driven.css' as *;
 
 /* 全局样式 */
 :root {

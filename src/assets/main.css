@@ -1,2 +1,2 @@
-@import './base.css';
-@import './theme.css';
+@use './base.css' as *;
+@use './theme.css' as *;

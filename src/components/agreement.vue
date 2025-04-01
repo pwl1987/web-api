@@ -313,5 +313,5 @@ const close = async (): Promise<void> => {
 }
 </script>
 <style lang="less" scoped>
-@import '../assets/agreement.less';
+@use '../assets/agreement.less' as *;
 </style>

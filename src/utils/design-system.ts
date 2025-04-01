@@ -2,6 +2,37 @@
  * 设计系统工具函数
  * 用于初始化和应用设计系统的配置
  */
+import { validateAndReportTokens } from './design-system-validator';
+
+/**
+ * 设计系统配置类型
+ */
+interface DesignSystemConfig {
+  theme: string;
+  version: string;
+  variables: {
+    primary: string;
+    gridUnit: number;
+    [key: string]: any;
+  };
+}
+
+/**
+ * 注入Google Fonts
+ */
+function injectGoogleFonts(): void {
+  // 检查是否已加载
+  if (document.getElementById('dd-google-fonts')) return;
+  
+  // 创建链接元素
+  const link = document.createElement('link');
+  link.id = 'dd-google-fonts';
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap';
+  
+  // 添加到head
+  document.head.appendChild(link);
+}
 
 /**
  * 初始化设计系统
@@ -9,7 +40,7 @@
  */
 export function initializeDesignSystem(): void {
   // 从window对象中获取设计系统配置
-  const designSystem = (window as any).DESIGN_SYSTEM || {
+  const designSystem = (window as any).DESIGN_SYSTEM as DesignSystemConfig || {
     theme: 'data-driven',
     version: '1.0',
     variables: {
@@ -30,8 +61,19 @@ export function initializeDesignSystem(): void {
   // 将主题信息添加到数据属性
   document.body.dataset.theme = designSystem.theme;
   document.body.dataset.themeVersion = designSystem.version;
+
+  // 注入Google Fonts
+  injectGoogleFonts();
   
   console.log(`[设计系统] 初始化完成: ${designSystem.theme} (v${designSystem.version})`);
+  
+  // 在开发环境中验证令牌
+  if (process.env.NODE_ENV !== 'production') {
+    // 等待CSS变量应用完成后验证
+    setTimeout(() => {
+      validateAndReportTokens();
+    }, 500);
+  }
 }
 
 /**

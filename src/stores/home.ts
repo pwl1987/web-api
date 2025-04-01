@@ -1,50 +1,42 @@
-import { reactive } from 'vue'
+/**
+ * Home store - 提供全局状态管理
+ */
 import { defineStore } from 'pinia'
+import { ref, reactive } from 'vue'
 
 // 定义首页状态的类型
 interface HomeState {
-  modelNum: number
-  videoNum: number
-  agreementVisible: boolean
   language: string
   isAgree: boolean
+  agreementVisible: boolean
 }
 
 export const useHomeStore = defineStore('home', () => {
+  // 状态
   const homeState = reactive<HomeState>({
-    modelNum: 0,
-    videoNum: 0,
-    agreementVisible: false,
     language: 'zh',
-    isAgree: false
+    isAgree: false,
+    agreementVisible: false
   })
 
-  const setModelNum = (data: number): void => {
-    homeState.modelNum = data
+  // 语言设置
+  function setLanguage(lang: string) {
+    homeState.language = lang
   }
 
-  const setVideoNum = (data: number): void => {
-    homeState.videoNum = data
+  // 协议相关
+  function setIsAgree(value: boolean) {
+    homeState.isAgree = value
   }
 
-  const setAgreementVisible = (data: boolean): void => {
-    homeState.agreementVisible = data
-  }
-
-  const setLanguage = (data: string): void => {
-    homeState.language = data
-  }
-
-  const setIsAgree = (data: boolean): void => {
-    homeState.isAgree = data
+  function setAgreementVisible(value: boolean) {
+    homeState.agreementVisible = value
   }
 
   return {
     homeState,
-    setModelNum,
-    setVideoNum,
-    setAgreementVisible,
     setLanguage,
-    setIsAgree
+    setIsAgree,
+    setAgreementVisible
   }
 })

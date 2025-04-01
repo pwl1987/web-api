@@ -20,7 +20,9 @@
     "preinstall": "node -r ts-node/register only-allow-pnpm.ts",
     "type-check": "tsc --noEmit",
     "upgrade-ts": "tsc --noEmit --skipLibCheck && eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "test:data-visual": "cypress run --spec",
+    "test:tdesign": "jest --testPathPattern="
   },
   "dependencies": {
     "axios": "1.8.4",
@@ -47,6 +49,7 @@
     "less": "^4.2.0",
     "prettier": "^3.3.2",
     "rimraf": "^6.0.1",
+    "sass-embedded": "^1.86.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
     "vite": "^6.2.3",

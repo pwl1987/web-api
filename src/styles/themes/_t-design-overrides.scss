@@ -24,9 +24,11 @@
   --td-component-stroke: var(--border-color) !important;
 }
 
-/* 组件覆盖 - 使用:global()选择器仅用于TDesign覆盖 */
+/* 按钮样式覆盖 */
+/* 使用:global来直接覆盖TDesign的样式 */
 :global(.t-button) {
-  transition: all var(--transition-base) ease;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) ease;
   
   &:hover {
     transform: translateY(-1px);
@@ -39,68 +41,64 @@
   }
 }
 
+/* 表格样式 - 修复嵌套问题 */
 :global(.t-table) {
-  &__header {
-    font-weight: 600;
-    background-color: var(--color-gray-50);
-    
-    :global(.t-table__th) {
-      padding: var(--spacing-sm) var(--spacing-md);
-    }
-  }
-  
-  &__row {
-    &:hover {
-      background-color: rgba(26, 115, 232, 0.05);
-    }
-    
-    &--striped {
-      background-color: var(--color-gray-50);
-    }
-  }
-  
-  &__cell {
-    padding: var(--spacing-sm) var(--spacing-md);
-    transition: all var(--transition-fast) ease;
-  }
+  /* 表格头部样式 */
+}
+:global(.t-table__header) {
+  font-weight: 600;
+  background-color: var(--color-gray-50);
+}
+:global(.t-table__th) {
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+:global(.t-table__row) {
+  /* 行样式 */
+}
+:global(.t-table__row:hover) {
+  background-color: rgba(26, 115, 232, 0.05);
+}
+:global(.t-table__row--striped) {
+  background-color: var(--color-gray-50);
+}
+:global(.t-table__cell) {
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-fast) ease;
 }
 
+/* 下拉菜单样式 - 修复嵌套问题 */
 :global(.t-dropdown) {
-  &__menu {
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-  }
-  
-  &__item {
-    transition: all var(--transition-fast) ease;
-    
-    &:hover {
-      background-color: var(--color-gray-100);
-    }
-    
-    &--active {
-      background-color: rgba(26, 115, 232, 0.1);
-      color: var(--color-primary);
-    }
-  }
+  /* 下拉菜单容器 */
+}
+:global(.t-dropdown__menu) {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+:global(.t-dropdown__item) {
+  transition: all var(--transition-fast) ease;
+}
+:global(.t-dropdown__item:hover) {
+  background-color: var(--color-gray-100);
+}
+:global(.t-dropdown__item--active) {
+  background-color: rgba(26, 115, 232, 0.1);
+  color: var(--color-primary);
 }
 
+/* 对话框样式 - 修复嵌套问题 */
 :global(.t-dialog) {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  
-  &__header {
-    padding: var(--spacing-md) var(--spacing-lg);
-  }
-  
-  &__body {
-    padding: var(--spacing-lg);
-  }
-  
-  &__footer {
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-top: 1px solid var(--border-color);
-  }
+}
+:global(.t-dialog__header) {
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+:global(.t-dialog__body) {
+  padding: var(--spacing-lg);
+}
+:global(.t-dialog__footer) {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
 }
 
 /* 暗黑模式适配 */

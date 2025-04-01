@@ -3,16 +3,135 @@
     /* 主色系 */
     --dd-primary: 332 85% 51%;
     --dd-primary-hover: 332 88% 45%;
+    --dd-primary-active: 332 90% 43%;
+    --dd-primary-light: 332 85% 90%;
+    
+    /* 状态色 */
+    --dd-success: 152 85% 40%;
+    --dd-warning: 38 85% 51%;
+    --dd-error: 0 85% 51%;
+    --dd-info: 210 85% 51%;
     
     /* 数据可视化扩展色 */
     --dd-series-1: 210 85% 51%;
     --dd-series-2: 38 85% 51%;
     --dd-series-3: 152 85% 51%;
+    --dd-series-4: 270 85% 51%;
+    --dd-series-5: 180 85% 51%;
+    
+    /* 网格单位 - 由JS设置，这里提供默认值 */
+    --grid-unit: 8;
+    
+    /* 实际颜色值后备方案 - 当HSL不可用时使用 */
+    --dd-primary-fallback: #ec1f73;
+    --dd-success-fallback: #0db863;
+    --dd-warning-fallback: #ed8f18;
+    --dd-error-fallback: #e02b2b;
+    --dd-info-fallback: #1a8ce2;
   }
 
   /* 与TDesign的兼容层 */
-  .t-design-wrapper {
-    --td-color-primary: hsl(var(--dd-primary));
-    --td-border-radius: calc(var(--grid-unit) * 1px); /* 8px */
+  :root {
+    /* 品牌色 */
+    --td-brand-color: hsl(var(--dd-primary, 332 85% 51%));
+    --td-brand-color-hover: hsl(var(--dd-primary-hover, 332 88% 45%));
+    --td-brand-color-active: hsl(var(--dd-primary-active, 332 90% 43%));
+    --td-brand-color-light: hsl(var(--dd-primary-light, 332 85% 90%));
+    
+    /* 主色 */
+    --td-primary-color: hsl(var(--dd-primary, 332 85% 51%));
+    --td-primary-color-hover: hsl(var(--dd-primary-hover, 332 88% 45%));
+    --td-primary-color-active: hsl(var(--dd-primary-active, 332 90% 43%));
+    --td-primary-color-disabled: hsla(var(--dd-primary, 332 85% 51%), 0.5);
+    --td-primary-color-light: hsl(var(--dd-primary-light, 332 85% 90%));
+    
+    /* 状态色 */
+    --td-success-color: hsl(var(--dd-success, 152 85% 40%));
+    --td-warning-color: hsl(var(--dd-warning, 38 85% 51%));
+    --td-error-color: hsl(var(--dd-error, 0 85% 51%));
+    --td-info-color: hsl(var(--dd-info, 210 85% 51%));
+    
+    /* 文本颜色 */
+    --td-text-color-primary: rgba(0, 0, 0, 0.9);
+    --td-text-color-secondary: rgba(0, 0, 0, 0.6);
+    --td-text-color-placeholder: rgba(0, 0, 0, 0.4);
+    --td-text-color-disabled: rgba(0, 0, 0, 0.26);
+    
+    /* 背景色 */
+    --td-bg-color-page: rgb(240, 242, 245);
+    --td-bg-color-container: white;
+    --td-bg-color-container-hover: rgb(248, 248, 248);
+    --td-bg-color-container-active: rgb(242, 242, 242);
+    
+    /* 边框相关 */
+    --td-border-radius: calc(var(--grid-unit, 8) * 1px);
+    --td-border-color: rgba(0, 0, 0, 0.08);
+    
+    /* 阴影 */
+    --td-shadow-1: 0 1px 10px rgba(0, 0, 0, 0.05), 0 4px 5px rgba(0, 0, 0, 0.08);
+    --td-shadow-2: 0 3px 14px rgba(0, 0, 0, 0.05), 0 8px 10px rgba(0, 0, 0, 0.08);
+    --td-shadow-3: 0 6px 24px rgba(0, 0, 0, 0.05), 0 16px 32px rgba(0, 0, 0, 0.08);
+    
+    /* 组件尺寸 */
+    --td-comp-size-xs: calc(var(--grid-unit, 8) * 3px);  /* 24px */
+    --td-comp-size-s: calc(var(--grid-unit, 8) * 4px);   /* 32px */
+    --td-comp-size-m: calc(var(--grid-unit, 8) * 5px);   /* 40px */
+    --td-comp-size-l: calc(var(--grid-unit, 8) * 6px);   /* 48px */
+    --td-comp-size-xl: calc(var(--grid-unit, 8) * 7px);  /* 56px */
+    
+    /* 间距 */
+    --td-spacing-1: calc(var(--grid-unit, 8) * 0.5px);  /* 4px */
+    --td-spacing-2: calc(var(--grid-unit, 8) * 1px);    /* 8px */
+    --td-spacing-3: calc(var(--grid-unit, 8) * 1.5px);  /* 12px */
+    --td-spacing-4: calc(var(--grid-unit, 8) * 2px);    /* 16px */
+    --td-spacing-5: calc(var(--grid-unit, 8) * 3px);    /* 24px */
+    --td-spacing-6: calc(var(--grid-unit, 8) * 4px);    /* 32px */
+    --td-spacing-7: calc(var(--grid-unit, 8) * 6px);    /* 48px */
+    --td-spacing-8: calc(var(--grid-unit, 8) * 8px);    /* 64px */
+    
+    /* 字体系统 */
+    --td-font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --td-font-family-mono: 'IBM Plex Mono', monospace;
+    
+    /* 字体大小 */
+    --td-font-size-xs: 0.75rem;   /* 12px */
+    --td-font-size-s: 0.875rem;   /* 14px */
+    --td-font-size-base: 1rem;    /* 16px */
+    --td-font-size-l: 1.125rem;   /* 18px */
+    --td-font-size-xl: 1.25rem;   /* 20px */
+    --td-font-size-xxl: 1.5rem;   /* 24px */
+    
+    /* 字重 */
+    --td-font-weight-regular: 400;
+    --td-font-weight-medium: 500;
+    --td-font-weight-semibold: 600;
+    --td-font-weight-bold: 700;
+    
+    /* 行高 */
+    --td-line-height-s: 1.2;
+    --td-line-height-base: 1.5;
+    --td-line-height-l: 1.8;
+    
+    /* 动画 */
+    --td-anim-duration-base: 0.2s;
+    --td-anim-time-fn-easing: cubic-bezier(0.38, 0, 0.24, 1);
+  }
+  
+  /* 暗黑模式变量 */
+  .dark-mode {
+    /* 文本颜色 */
+    --td-text-color-primary: rgba(255, 255, 255, 0.9);
+    --td-text-color-secondary: rgba(255, 255, 255, 0.6);
+    --td-text-color-placeholder: rgba(255, 255, 255, 0.4);
+    --td-text-color-disabled: rgba(255, 255, 255, 0.26);
+    
+    /* 背景色 */
+    --td-bg-color-page: rgb(20, 20, 20);
+    --td-bg-color-container: rgb(32, 32, 32);
+    --td-bg-color-container-hover: rgb(40, 40, 40);
+    --td-bg-color-container-active: rgb(45, 45, 45);
+    
+    /* 边框相关 */
+    --td-border-color: rgba(255, 255, 255, 0.12);
   }
 } 

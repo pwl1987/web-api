@@ -66,12 +66,12 @@ const handleClick = (event: MouseEvent) => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: calc(var(--grid-unit) * 1px);
+  border-radius: var(--td-border-radius);
   font-weight: 500;
   font-size: 14px;
-  padding: 0 16px;
-  height: 36px;
-  transition: all 0.2s ease;
+  padding: 0 var(--td-spacing-4);
+  height: var(--td-comp-size-m);
+  transition: all var(--td-anim-duration-base) var(--td-anim-time-fn-easing);
   border: none;
   cursor: pointer;
   position: relative;
@@ -85,41 +85,50 @@ const handleClick = (event: MouseEvent) => {
 
 /* 主要按钮 */
 .dd-button.primary {
-  background-color: hsl(var(--dd-primary));
+  background-color: var(--td-primary-color);
   color: white;
 }
 
 .dd-button.primary:hover:not(.disabled, .loading) {
-  background-color: hsl(var(--dd-primary-hover));
+  background-color: var(--td-primary-color-hover);
+}
+
+.dd-button.primary:active:not(.disabled, .loading) {
+  background-color: var(--td-primary-color-active);
 }
 
 /* 次要按钮 */
 .dd-button.secondary {
-  background-color: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.88);
+  background-color: var(--td-bg-color-container-hover);
+  color: var(--td-text-color-primary);
 }
 
 .dd-button.secondary:hover:not(.disabled, .loading) {
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: var(--td-bg-color-container-active);
 }
 
 /* 文本按钮 */
 .dd-button.text {
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.88);
-  padding: 0 8px;
+  color: var(--td-text-color-primary);
+  padding: 0 var(--td-spacing-2);
 }
 
 .dd-button.text:hover:not(.disabled, .loading) {
-  color: hsl(var(--dd-primary));
-  background-color: rgba(0, 0, 0, 0.02);
+  color: var(--td-primary-color);
+  background-color: var(--td-bg-color-container-hover);
 }
 
 /* 禁用状态 */
 .dd-button.disabled {
-  background-color: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.25);
+  background-color: var(--td-bg-color-container-hover);
+  color: var(--td-text-color-disabled);
   cursor: not-allowed;
+}
+
+.dd-button.primary.disabled {
+  background-color: var(--td-primary-color-disabled);
+  color: white;
 }
 
 /* 加载状态 */
@@ -130,5 +139,18 @@ const handleClick = (event: MouseEvent) => {
 .loading-icon {
   display: inline-flex;
   align-items: center;
+}
+
+/* 暗黑模式适配 */
+:global(.dark-mode) .dd-button.secondary {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(.dark-mode) .dd-button.secondary:hover:not(.disabled, .loading) {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(.dark-mode) .dd-button.text:hover:not(.disabled, .loading) {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 </style> 

@@ -15,10 +15,9 @@
           ]"
           :aria-current="item.active ? 'page' : undefined"
         >
-          <img 
-            class="w-8 h-8 mb-1" 
-            :src="item.active ? item.onIcon : item.offIcon" 
-            :alt="item.name + '图标'"
+          <component 
+            :is="item.icon" 
+            class="w-7 h-7 mb-1"
           />
           <span class="text-xs font-medium">{{ item.name }}</span>
           
@@ -37,19 +36,20 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
 import { reactive, watch, computed } from 'vue'
-import onIcon from '../assets/images/home/menu/onHome.svg'
-import activeIcon from '../assets/images/home/menu/active.svg'
-import offIcon from '../assets/images/home/menu/offHome.svg'
-import onVoiceIcon from '../assets/images/home/menu/onVoice.svg'
-import offVoiceIcon from '../assets/images/home/menu/offVoice.svg'
+// 使用TDesign的图标代替SVG文件
+import { 
+  HomeIcon, 
+  AppIcon, 
+  SoundIcon, 
+  UserIcon 
+} from 'tdesign-icons-vue-next'
 import { useI18n } from 'vue-i18n'
 
 // 定义菜单项接口
 interface MenuItem {
   key: string
   name: string
-  onIcon: string
-  offIcon: string
+  icon: any // TDesign图标组件
   active: boolean
   path: string
 }
@@ -67,16 +67,14 @@ const obj: MenuItem[] = [
   {
     key: 'common.menu.text',
     name: t('common.menu.text'),
-    onIcon,
-    offIcon,
+    icon: HomeIcon,
     active: true,
     path: '/home'
   },
   {
     key: 'common.menu.voice',
     name: t('common.menu.voice') || '音色管理',
-    onIcon: onVoiceIcon,
-    offIcon: offVoiceIcon,
+    icon: SoundIcon,
     active: false,
     path: '/voice-management'
   }

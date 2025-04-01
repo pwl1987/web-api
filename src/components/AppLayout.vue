@@ -40,13 +40,13 @@ defineProps({
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: rgb(240, 242, 245);
+  background-color: var(--td-bg-color-page);
 }
 
 .dd-header {
-  height: 64px;
-  background-color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: calc(var(--td-comp-size-l) + var(--td-spacing-2));
+  background-color: var(--td-bg-color-container);
+  box-shadow: var(--td-shadow-1);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -57,39 +57,39 @@ defineProps({
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0 24px;
+  padding: 0 var(--td-spacing-5);
 }
 
 .logo {
   font-size: 18px;
   font-weight: 600;
-  color: hsl(var(--dd-primary));
+  color: var(--td-primary-color);
 }
 
 .dd-container {
   display: flex;
   flex: 1;
-  height: calc(100vh - 64px);
+  height: calc(100vh - calc(var(--td-comp-size-l) + var(--td-spacing-2)));
 }
 
 .dd-sidebar {
   width: 220px;
-  background-color: white;
-  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: var(--td-bg-color-container);
+  border-right: 1px solid var(--td-border-color);
   height: 100%;
   overflow-y: auto;
 }
 
 .dd-content {
   flex: 1;
-  padding: calc(var(--grid-unit) * 3px);
+  padding: var(--td-spacing-5);
   overflow-y: auto;
 }
 
 .dd-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: calc(var(--grid-unit) * 2px);
+  gap: var(--td-spacing-4);
   width: 100%;
 }
 
@@ -99,7 +99,7 @@ defineProps({
     width: 0;
     position: fixed;
     left: 0;
-    top: 64px;
+    top: calc(var(--td-comp-size-l) + var(--td-spacing-2));
     z-index: 5;
     transition: width 0.3s;
   }

@@ -107,7 +107,7 @@
 import { reactive, onMounted, ref } from 'vue'
 import { DeleteIcon } from 'tdesign-icons-vue-next'
 import { modelPage, removeModel } from '@renderer/api/index'
-import { formatDate, handlePath } from '@renderer/utils/index'
+import { formatDate, handlePath } from '@renderer/utils/index.ts'
 import { useRouter } from 'vue-router'
 import VideoDialog from '@renderer/views/home/components/videoDialog.vue'
 import DeleteDialog from '@renderer/components/deleteDialog.vue'

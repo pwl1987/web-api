@@ -1,5 +1,5 @@
-@import '../utilities/mixins';
-@import '../themes/variables';
+@use '../utilities/mixins';
+@use '../themes/variables';
 
 /* hash:appHeader_123abf - 与测试快照匹配 */
 .header {
@@ -50,7 +50,7 @@
   align-items: center;
   gap: var(--spacing-lg);
   
-  @include desktop {
+  @include mixins.desktop {
     display: flex;
   }
 }
@@ -137,7 +137,7 @@
     }
   }
   
-  @include desktop {
+  @include mixins.desktop {
     display: none;
   }
 }
@@ -162,7 +162,7 @@
     border-color: var(--color-gray-700);
   }
   
-  @include desktop {
+  @include mixins.desktop {
     display: none;
   }
 }
