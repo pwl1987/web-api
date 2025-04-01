@@ -1,6 +1,9 @@
 import './assets/main.css'
 // 导入我们的新样式
 import './styles/main.scss'
+// 初始化设计系统变量
+import { initializeDesignSystem } from './utils/design-system'
+
 import TDesign from 'tdesign-vue-next'
 import { createApp, type App as VueApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -24,5 +27,8 @@ declare global {
   }
 }
 window.client = webClient;
+
+// 初始化设计系统
+initializeDesignSystem();
 
 app.use(router).use(createPinia()).use(TDesign).use(i18n).mount('#app')

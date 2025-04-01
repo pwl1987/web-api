@@ -1,0 +1,18 @@
+@layer base {
+  :root {
+    /* 主色系 */
+    --dd-primary: 332 85% 51%;
+    --dd-primary-hover: 332 88% 45%;
+    
+    /* 数据可视化扩展色 */
+    --dd-series-1: 210 85% 51%;
+    --dd-series-2: 38 85% 51%;
+    --dd-series-3: 152 85% 51%;
+  }
+
+  /* 与TDesign的兼容层 */
+  .t-design-wrapper {
+    --td-color-primary: hsl(var(--dd-primary));
+    --td-border-radius: calc(var(--grid-unit) * 1px); /* 8px */
+  }
+} 

@@ -1,12 +1,16 @@
 <template>
-  <div :class="[styles.tableWrapper, isDarkMode ? styles.darkMode : '']">
-    <table :class="styles.table">
-      <thead :class="[styles.tableHeader, isDarkMode ? styles.darkMode : '']">
+  <div :class="[styles.tableWrapper, isDarkMode ? styles.darkMode : '', 'dd-table-wrapper']">
+    <table :class="[styles.table, 'dd-table']">
+      <thead :class="[styles.tableHeader, isDarkMode ? styles.darkMode : '', 'dd-table-header']">
         <tr>
           <th 
             v-for="(column, index) in columns" 
             :key="index"
-            :class="[column.sortable ? styles.sortable : '', isDarkMode ? styles.darkMode : '']"
+            :class="[
+              column.sortable ? styles.sortable : '', 
+              isDarkMode ? styles.darkMode : '',
+              'dd-table-th'
+            ]"
             @click="column.sortable ? handleSort(column.key) : null"
           >
             {{ column.label }}
@@ -16,16 +20,20 @@
           </th>
         </tr>
       </thead>
-      <tbody :class="styles.tableBody">
+      <tbody :class="[styles.tableBody, 'dd-table-body']">
         <tr 
           v-for="(row, rowIndex) in paginatedData" 
           :key="rowIndex"
-          :class="[isDarkMode ? styles.darkMode : '']"
+          :class="[
+            isDarkMode ? styles.darkMode : '',
+            'dd-table-row',
+            rowIndex % 2 === 0 ? 'dd-table-row-even' : 'dd-table-row-odd'
+          ]"
         >
           <td 
             v-for="(column, colIndex) in columns" 
             :key="colIndex"
-            :class="[isDarkMode ? styles.darkMode : '']"
+            :class="[isDarkMode ? styles.darkMode : '', 'dd-table-cell']"
           >
             <slot :name="column.key" :row="row" :value="row[column.key]">
               {{ row[column.key] }}
@@ -33,7 +41,7 @@
           </td>
         </tr>
         <tr v-if="!paginatedData.length">
-          <td :colspan="columns.length" :class="[styles.emptyState, isDarkMode ? styles.darkMode : '']">
+          <td :colspan="columns.length" :class="[styles.emptyState, isDarkMode ? styles.darkMode : '', 'dd-table-empty']">
             <slot name="empty">
               {{ emptyText }}
             </slot>
@@ -42,14 +50,18 @@
       </tbody>
     </table>
     
-    <div v-if="pagination && data.length" :class="styles.pagination">
-      <div :class="[styles.pageInfo, isDarkMode ? styles.darkMode : '']">
+    <div v-if="pagination && data.length" :class="[styles.pagination, 'dd-table-pagination']">
+      <div :class="[styles.pageInfo, isDarkMode ? styles.darkMode : '', 'dd-page-info']">
         {{ t('common.table.showing') }} {{ startIndex + 1 }} {{ t('common.table.to') }} {{ Math.min(endIndex, data.length) }} {{ t('common.table.of') }} {{ data.length }} {{ t('common.table.entries') }}
       </div>
       
-      <div :class="styles.pageControls">
+      <div :class="[styles.pageControls, 'dd-page-controls']">
         <button 
-          :class="[styles.pageButton, isDarkMode ? styles.darkMode : '']" 
+          :class="[
+            styles.pageButton, 
+            isDarkMode ? styles.darkMode : '',
+            'dd-page-button'
+          ]" 
           @click="changePage(currentPage - 1)"
           :disabled="currentPage === 1"
         >
@@ -62,7 +74,9 @@
           :class="[
             styles.pageButton, 
             currentPage === page ? styles.active : '',
-            isDarkMode ? styles.darkMode : ''
+            isDarkMode ? styles.darkMode : '',
+            'dd-page-button',
+            currentPage === page ? 'dd-page-button-active' : ''
           ]"
           @click="changePage(page)"
         >
@@ -70,7 +84,11 @@
         </button>
         
         <button 
-          :class="[styles.pageButton, isDarkMode ? styles.darkMode : '']" 
+          :class="[
+            styles.pageButton, 
+            isDarkMode ? styles.darkMode : '',
+            'dd-page-button'
+          ]" 
           @click="changePage(currentPage + 1)"
           :disabled="currentPage === totalPages"
         >
@@ -78,11 +96,11 @@
         </button>
       </div>
       
-      <div :class="[styles.rowsPerPage, isDarkMode ? styles.darkMode : '']">
+      <div :class="[styles.rowsPerPage, isDarkMode ? styles.darkMode : '', 'dd-rows-per-page']">
         {{ t('common.table.rowsPerPage') }}
         <select 
           v-model="pageSize" 
-          :class="[styles.rowsSelect, isDarkMode ? styles.darkMode : '']"
+          :class="[styles.rowsSelect, isDarkMode ? styles.darkMode : '', 'dd-rows-select']"
         >
           <option v-for="size in pageSizeOptions" :key="size" :value="size">
             {{ size }}
@@ -233,7 +251,6 @@ const handleSort = (key: string) => {
 };
 </script>
 
-<!-- 保留原有样式作为降级方案 -->
 <style scoped>
 /* Original: Line 1-5 */
 .table-wrapper {
@@ -331,5 +348,107 @@ const handleSort = (key: string) => {
 .page-button.active {
   background-color: #1a73e8;
   color: white;
+}
+
+/* 数据驱动风格表格样式增强 */
+:deep(.dd-table-wrapper) {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: calc(var(--grid-unit) * 1px);
+  background-color: white;
+}
+
+:deep(.dd-table) {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:deep(.dd-table-header) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+:deep(.dd-table-th) {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+  padding: calc(var(--grid-unit) * 1.5px) calc(var(--grid-unit) * 2px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:deep(.dd-table-row) {
+  transition: background-color 0.2s;
+}
+
+:deep(.dd-table-row:hover) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+:deep(.dd-table-row-even) {
+  background-color: white;
+}
+
+:deep(.dd-table-row-odd) {
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+:deep(.dd-table-cell) {
+  padding: calc(var(--grid-unit) * 1.5px) calc(var(--grid-unit) * 2px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+:deep(.dd-table-empty) {
+  color: rgba(0, 0, 0, 0.45);
+  padding: calc(var(--grid-unit) * 4px);
+}
+
+:deep(.dd-table-pagination) {
+  padding: calc(var(--grid-unit) * 1.5px) calc(var(--grid-unit) * 2px);
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+:deep(.dd-page-button) {
+  min-width: calc(var(--grid-unit) * 4px);
+  height: calc(var(--grid-unit) * 4px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: calc(var(--grid-unit) * 0.5px);
+}
+
+:deep(.dd-page-button-active) {
+  background-color: hsl(var(--dd-primary));
+  border-color: hsl(var(--dd-primary));
+  color: white;
+}
+
+:deep(.dd-rows-select) {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: calc(var(--grid-unit) * 0.5px);
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+/* 暗黑模式适配 */
+:deep(.dark-mode .dd-table-wrapper) {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:deep(.dark-mode .dd-table-header) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+:deep(.dark-mode .dd-table-th) {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:deep(.dark-mode .dd-table-row-even) {
+  background-color: transparent;
+}
+
+:deep(.dark-mode .dd-table-row-odd) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+:deep(.dark-mode .dd-table-cell) {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.65);
 }
 </style> 
